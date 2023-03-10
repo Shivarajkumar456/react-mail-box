@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { mailSliceAction } from '../../store/emailReducer';
-import classes from './Inbox.module.css'
+import classes from './Inbox.module.css';
 
 const Inbox = () => {
     const dispatch=useDispatch();
@@ -35,6 +36,9 @@ const Inbox = () => {
                     <div className={classes.row1} key={item.id}>
                     <div className={classes.user}>{item.sender}</div>
             <div className={classes.subject}>{item.subject}</div>
+            <div className={classes.msg}>
+                <NavLink to={`/message/${item.id}`}>message</NavLink>
+            </div>
             </div>
                 ))
 
