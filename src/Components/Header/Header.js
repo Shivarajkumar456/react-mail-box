@@ -8,6 +8,7 @@ import './Header.css';
 
 const Header = ()=> {
     const isLoggedIn = useSelector(state=> state.auth.isLoggedin);
+    const unread = useSelector(state=>state.mail.unread);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const logoutHandler = (event)=> {
@@ -38,7 +39,10 @@ const Header = ()=> {
                   Compose
                 </NavLink></Nav.Link>}
                 {isLoggedIn && <Nav.Link className="h6"><NavLink to="/inbox" className='navbar-link'>
-                  Inbox
+                  Inbox{unread}
+                </NavLink></Nav.Link>}
+                {isLoggedIn && <Nav.Link className="h6"><NavLink to="/sent" className='navbar-link'>
+                  Sent
                 </NavLink></Nav.Link>}
                 {isLoggedIn && <Nav.Link className="h6"><NavLink onClick={logoutHandler} to="/" className='navbar-link'>
                   Logout

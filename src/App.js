@@ -6,6 +6,7 @@ import Home from './Components/Home/Home';
 import Send from './Components/Email/Send';
 import Inbox from './Components/Email/Inbox';
 import ReadMsg from './Components/Email/ReadMsg';
+import SentBox from './Components/Email/SentBox';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/compose' element={<Send />} />
         <Route path='/inbox' element={<Inbox />} />
+        <Route path='/sent' element={<SentBox />} />
         <Route path='/message/:id' element={<ReadMsg />} />
       </Routes>
     </div>

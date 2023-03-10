@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialEmailState={
     mails:[],
+    unread:0
 }
 
 const mailSlice=createSlice({
@@ -11,6 +12,9 @@ const mailSlice=createSlice({
     reducers:{
         updateInbox(state,action){
             state.mails=action.payload
+        },
+        updateUnread(state,action){
+            state.unRead=action.payload
         }
     }
 });

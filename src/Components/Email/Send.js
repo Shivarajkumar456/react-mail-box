@@ -31,7 +31,7 @@ const Send = () => {
         const sender1=sender.replace(/[@.]/g,'');
         const receiver = email.replace(/['@','.']/g, '');
         // console.log(sender,receiver);
-        fetch(`https://mail-box-8893a-default-rtdb.firebaseio.com/${sender1}.json`, {
+        fetch(`https://mail-box-8893a-default-rtdb.firebaseio.com/sentbox/${sender1}.json`, {
             method: 'POST',
             body: JSON.stringify({
                 subject: subject,
@@ -42,16 +42,18 @@ const Send = () => {
             }
         }).then((res) => {
             if (!res.ok) {
-                alert(res.error.message)
+                alert(res.error.message);
             } else {
                 console.log('successfull');
             }
         })
-        fetch(`https://mail-box-8893a-default-rtdb.firebaseio.com/${receiver}.json`, {
+        fetch(`https://mail-box-8893a-default-rtdb.firebaseio.com/inbox/${receiver}.json`, {
             method: 'POST',
             body: JSON.stringify({
+                sender: sender,
                 subject: subject,
-                message: editorState.getCurrentContent().getPlainText()
+                message: editorState.getCurrentContent().getPlainText(),
+                dot:true
             }),
             headers: {
                 'Content-Type': 'application/json'
