@@ -37,6 +37,9 @@ const Header = ()=> {
                 {isLoggedIn && <Nav.Link className="h6"><NavLink to="/compose" className='navbar-link'>
                   Compose
                 </NavLink></Nav.Link>}
+                {isLoggedIn && <Nav.Link className="h6"><NavLink to="/inbox" className='navbar-link'>
+                  Inbox
+                </NavLink></Nav.Link>}
                 {isLoggedIn && <Nav.Link className="h6"><NavLink onClick={logoutHandler} to="/" className='navbar-link'>
                   Logout
                 </NavLink></Nav.Link>}

@@ -28,9 +28,10 @@ const Send = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         const sender = localStorage.getItem('email');
+        const sender1=sender.replace(/[@.]/g,'');
         const receiver = email.replace(/['@','.']/g, '');
         // console.log(sender,receiver);
-        fetch(`https://mail-box-8893a-default-rtdb.firebaseio.com/${sender}.json`, {
+        fetch(`https://mail-box-8893a-default-rtdb.firebaseio.com/${sender1}.json`, {
             method: 'POST',
             body: JSON.stringify({
                 subject: subject,
