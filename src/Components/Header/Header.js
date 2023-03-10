@@ -1,10 +1,18 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "../../store/Auth";
 import './Header.css';
 
 const Header = ()=> {
     const isLoggedIn = useSelector(state=> state.auth.isLoggedin);
+    const dispatch = useDispatch();
+    const logoutHandler = (event)=> {
+      event.preventDefault();
+      dispatch(authActions.logout());
+      alert('logout successfully');
+    }
     
   return (
     <>
@@ -20,12 +28,12 @@ const Header = ()=> {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ms-auto">
-                <Nav.Link className="h6">
+                <Nav.Link className="h6"><NavLink to="/home" className='navbar-link'>
                   Home
-                </Nav.Link>
-                {isLoggedIn && <Nav.Link className="h6">
+                </NavLink></Nav.Link>
+                {isLoggedIn && <Nav.Link className="h6"><NavLink onClick={logoutHandler} to="/" className='navbar-link'>
                   Logout
-                </Nav.Link>}
+                </NavLink></Nav.Link>}
               </Nav>
             </Navbar.Collapse>
           </Container>

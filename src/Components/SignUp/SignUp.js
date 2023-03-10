@@ -2,9 +2,11 @@ import { Fragment, useState, useRef } from "react";
 import { Form ,Button} from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store/Auth";
+import { useNavigate } from "react-router-dom";
 import './SignUp.css';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -50,6 +52,7 @@ const SignUp = () => {
           token: data.idToken,
           email: emailInputRef.current.value
         }))
+        navigate('/home');
       })
       .catch((err) => {
         alert(err.message);
