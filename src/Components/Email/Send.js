@@ -63,6 +63,9 @@ const Send = () => {
                 alert(res.error.message)
             } else {
                 console.log('successfull');
+                setEditorState('');
+                setSubject('');
+                setEmail('');
             }
         })
     }

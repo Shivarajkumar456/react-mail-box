@@ -1,10 +1,20 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { mailSliceAction } from '../../store/emailReducer';
+import { useState } from 'react';
 const Home = () => {
     const dispatch=useDispatch();
   const myEmail=localStorage.getItem('email').replace(/['@','.']/g,'');
+  const [reRender,setreRender]=useState(true);
+  const unRead=useSelector(state=>state.mail.unRead)
   let noOfUnread=0;
+
+  let intervalID;
+  intervalID = setInterval(()=>{
+    setreRender((prev)=>!prev);
+    console.log('intervall',intervalID);
+  }, 2000);
+
 
   useEffect(()=>{
     const fetchDaata=async()=>{

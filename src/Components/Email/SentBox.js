@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { mailSliceAction } from '../../store/emailReducer';
 import classes from './SentBox.module.css';
 
@@ -48,7 +47,7 @@ const SentBox = () => {
                     <div className={classes.user}>To :- {item.to}</div>
             <div className={classes.subject}>Subject :- {item.subject}</div>
             <div className={classes.msg}>
-                <NavLink to={`/message/${item.id}`}>message</NavLink>
+                messages: {item.message}
             </div>
             <div className={classes.delete}>
                 <button onClick={deleteHandler.bind(null,item.id)}>Delete</button>
